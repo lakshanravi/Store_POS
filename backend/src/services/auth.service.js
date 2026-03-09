@@ -20,8 +20,8 @@ async function loginWithPassword(username, password) {
   if (!valid) throw new Error('Invalid username or password');
 
   await user.update({ last_login: new Date() });
-
-  const payload = { id: user.id, username: user.username, role: user.role.name, permissions: user.role.permissions };
+const perms = typeof user.role.permissions === 'string' ? JSON.parse(user.role.permissions) : user.role.permissions;
+const payload = { id: user.id, username: user.username, role: user.role.name, permissions: perms };
   return { user: sanitizeUser(user), ...generateTokens(payload) };
 }
 
@@ -37,7 +37,8 @@ async function loginWithPin(username, pin) {
 
   await user.update({ last_login: new Date() });
 
-  const payload = { id: user.id, username: user.username, role: user.role.name, permissions: user.role.permissions };
+  const perms = typeof user.role.permissions === 'string' ? JSON.parse(user.role.permissions) : user.role.permissions;
+const payload = { id: user.id, username: user.username, role: user.role.name, permissions: perms };
   return { user: sanitizeUser(user), ...generateTokens(payload) };
 }
 
@@ -52,7 +53,8 @@ async function refreshAccessToken(refreshToken) {
   });
   if (!user) throw new Error('User not found');
 
-  const payload = { id: user.id, username: user.username, role: user.role.name, permissions: user.role.permissions };
+  const perms = typeof user.role.permissions === 'string' ? JSON.parse(user.role.permissions) : user.role.permissions;
+const payload = { id: user.id, username: user.username, role: user.role.name, permissions: perms };
   const accessToken = jwt.sign(payload, jwtConfig.secret, { expiresIn: jwtConfig.expiresIn });
   return { accessToken };
 }
