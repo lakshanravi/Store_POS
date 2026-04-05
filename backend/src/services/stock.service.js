@@ -1,7 +1,6 @@
 const { Product, StockMovement } = require('../models');
 const { sequelize } = require('../config/database');
 
-// Deduct stock for multiple items in one transaction
 async function deductStock(items, saleId, userId, transaction) {
   for (const item of items) {
     const product = await Product.findByPk(item.product_id, { transaction, lock: true });

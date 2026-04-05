@@ -73,7 +73,7 @@ export default function Login() {
                 <input type="text" value={form.username}
                   onChange={e => setForm({...form, username: e.target.value})}
                   placeholder="your username"
-                  className="input-base pl-9" />
+                  className="input-base !pl-10" />
               </div>
             </div>
 
@@ -86,7 +86,7 @@ export default function Login() {
                     <input type={showPass ? 'text' : 'password'} value={form.password}
                       onChange={e => setForm({...form, password: e.target.value})}
                       placeholder="your password"
-                      className="input-base pl-9 pr-9" />
+                      className="input-base !pl-10 pr-9" />
                     <button type="button" onClick={() => setShowPass(!showPass)}
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300">
                       {showPass ? <EyeOff size={14} /> : <Eye size={14} />}

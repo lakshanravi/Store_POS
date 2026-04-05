@@ -63,6 +63,8 @@ PurchaseOrderItem.belongsTo(Product,        { foreignKey: 'product_id', as: 'pro
 
 AuditLog.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 
+
+
 module.exports = {
   Role, User, Category, Supplier, Product, Customer,
   PaymentMethod, Sale, SaleItem, SalePayment,
