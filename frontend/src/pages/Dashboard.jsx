@@ -66,7 +66,7 @@ export default function Dashboard() {
               <Link to="/reports/daily" className="flex items-center gap-3 p-3 bg-violet-600/10 border border-violet-500/20 rounded-xl hover:bg-violet-600/20 transition-all">
                 <TrendingUp size={20} className="text-violet-400" />
                 <div>
-                  <p className="text-white text-sm font-medium">Reports</p>
+                  <p className="text-white text-sm font-medium">Reports of details</p>
                   <p className="text-slate-500 text-xs">View analytics</p>
                 </div>
               </Link>
